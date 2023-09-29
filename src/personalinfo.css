@@ -1,0 +1,23 @@
+
+
+.span-details{
+  font-size: 16px;
+  font-weight: 400;
+  font-weight: bold;
+  position: relative;
+  right: 80px;
+}
+.btn-next-step{
+  background-color: #174A89;
+  color: white;
+  padding: 4px;
+  border-radius: 9px;
+  height: 42px;
+  width: 100px;
+  border: none;
+  position: relative;
+  top: 20px;
+}
+.form-control{
+  width: 85% ;
+}
