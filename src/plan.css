@@ -53,3 +53,34 @@
   width: 30px;
 }
 
+.additional-info {
+  display: flex;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 0.3rem;
+  color: rgba(2,40,90,255);
+}
+
+.price{
+  color: grey;
+}
+
+.card-plan{
+  border-color: rgba(226,221,244,255);
+  background-color: rgba(248,249,254,255);
+  border-width: 2px;
+}
+
+.c-plan{
+  cursor: pointer;
+
+}
+.toggle-unselected{
+  font-weight: bold;
+  color: grey;
+}
+.toggle-selected{
+  font-weight: bold;
+  color: rgba(34,53,79,255);
+}
+
