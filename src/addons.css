@@ -11,10 +11,11 @@
   padding:0;
   cursor: pointer;
   color: gray;
-  font-size: 25px;
+  font-size: 18px;
+  font-weight: bold;
 }
 .btn-prev-step:hover {
-  font-size: 28px;
+  color: black;
   
 }
 
@@ -24,10 +25,17 @@
   cursor: pointer;
 }
 .body-price{
-  color: rgb(152,146,233,255);
+  font-weight: 600;
+  color: rgba(2,40,90,255);
 }
 .card-selected{
+  border-color: rgba(200,200,244,255);
+  background-color: rgba(226,220,244,255);
+  border-width: 2px;
+}
+.card-unselected:hover{
   border-color: rgba(226,221,244,255);
   background-color: rgba(248,249,254,255);
   border-width: 2px;
+
 }

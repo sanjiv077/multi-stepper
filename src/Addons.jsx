@@ -31,7 +31,7 @@ const Addons = ({ onPrev, onNext }) => {
       <div className="cards">
         <Card
           className={`mt-5 my-3 ${
-            checkboxes.onlineServices ? "card-selected" : ""
+            checkboxes.onlineServices ? "card-selected" : "card-unselected"
           }`}
         >
           <div className="d-flex">
@@ -53,7 +53,7 @@ const Addons = ({ onPrev, onNext }) => {
           </div>
         </Card>
         <Card
-          className={`mt-4 ${checkboxes.largerStorage ? "card-selected" : ""}`}
+          className={`mt-4 ${checkboxes.largerStorage ? "card-selected" : "card-unselected"}`}
         >
           <div className="d-flex">
             <div className="p-2">
@@ -75,7 +75,7 @@ const Addons = ({ onPrev, onNext }) => {
         </Card>
         <Card
           className={`mt-4 ${
-            checkboxes.customizableProfile ? "card-selected" : ""
+            checkboxes.customizableProfile ? "card-selected" : "card-unselected"
           }`}
         >
           <div className="d-flex">

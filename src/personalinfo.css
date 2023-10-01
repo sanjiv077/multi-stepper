@@ -8,7 +8,7 @@
   right: 80px;
 }
 .btn-next-step{
-  background-color: #174A89;
+  background-color: rgba(2,40,90,255);
   color: white;
   border-radius: 9px;
   height: 42px;
@@ -16,6 +16,10 @@
   border: none;
   position: relative;
   
+}
+.btn-next-step:hover{
+  background-color: rgba(22,74,138,255);
+
 }
 .form-control{
   width: 85% ;

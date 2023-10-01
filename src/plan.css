@@ -22,7 +22,7 @@
   text-indent: -9999px;
   width: 50px;
   height: 25px;
-  background: grey;
+  background: rgba(2,40,90,255);
   display: block;
   border-radius: 80px;
   position: relative;
@@ -66,8 +66,8 @@
 }
 
 .card-plan{
-  border-color: rgba(226,221,244,255);
-  background-color: rgba(248,249,254,255);
+  border-color: rgba(200,200,244,255);
+  background-color: rgba(226,220,244,255);
   border-width: 2px;
 }
 
@@ -75,12 +75,15 @@
   cursor: pointer;
 
 }
-.toggle-unselected{
-  font-weight: bold;
-  color: grey;
+.c-plan:hover{
+  cursor: pointer;
+  border-color: rgba(226,221,244,255);
+  background-color: rgba(248,249,254,255);
+  border-width: 2px;
+  transform: scaleX(1.01);
+  
+
 }
-.toggle-selected{
-  font-weight: bold;
-  color: rgba(34,53,79,255);
-}
+
+
 
