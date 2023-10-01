@@ -32,28 +32,52 @@ const Home = () => {
               <div className=" left-img d-flex">
                 <div className="mt-5">
                   <div className="d-flex">
-                    <p className={`ms-5 ${step === 1 ? 'selected-step' : 'notselected-step'}`}>1</p>
+                    <p
+                      className={`ms-5 ${
+                        step === 1 ? "selected-step" : "notselected-step"
+                      }`}
+                    >
+                      1
+                    </p>
                     <p className="ms-3 text-white  text-lighter">STEP 1</p>
                     <div className="mt-3">
                       <p className="info text-white mt-1">YOUR INFO</p>
                     </div>
                   </div>
                   <div className="d-flex mt-3">
-                    <p className={`ms-5 ${step === 2 ? 'selected-step' : 'notselected-step'}`}>2</p>
+                    <p
+                      className={`ms-5 ${
+                        step === 2 ? "selected-step" : "notselected-step"
+                      }`}
+                    >
+                      2
+                    </p>
                     <p className="ms-3 text-white  text-lighter">STEP 2</p>
                     <div className="mt-3">
                       <p className="info text-white mt-1">SELECT PLAN</p>
                     </div>
                   </div>
                   <div className="d-flex mt-3">
-                    <p className={`ms-5 ${step === 3 ? 'selected-step' : 'notselected-step'}`}>3</p>
+                    <p
+                      className={`ms-5 ${
+                        step === 3 ? "selected-step" : "notselected-step"
+                      }`}
+                    >
+                      3
+                    </p>
                     <p className="ms-3 text-white text-lighter">STEP 3</p>
                     <div className="mt-3">
                       <p className="info text-white mt-1">ADD-ONS</p>
                     </div>
                   </div>
                   <div className="d-flex mt-3">
-                    <p className={`ms-5 ${step === 4 ? 'selected-step' : 'notselected-step'}`}>4</p>
+                    <p
+                      className={`ms-5 ${
+                        step === 4 ? "selected-step" : "notselected-step"
+                      }`}
+                    >
+                      4
+                    </p>
                     <p className="ms-3 text-white text-lighter ">STEP 4</p>
                     <div className="mt-3">
                       <p className="info text-white mt-1">SUMMARY</p>

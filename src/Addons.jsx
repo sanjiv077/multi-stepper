@@ -6,33 +6,42 @@ import { Col } from "react-bootstrap";
 import "./addons.css";
 
 const Addons = ({ onPrev, onNext }) => {
-  const [checkboxes , setCheckboxes] = useState({
-    onlineServices: false ,
-    largerStorage: false,
-    customizableProfile: false,
-  })
+  const [checkboxes, setCheckboxes] = useState({
+    onlineServices:
+      localStorage.getItem("onlineServices") === "true" ? true : false,
+    largerStorage:
+      localStorage.getItem("largerStorage") === "true" ? true : false,
+    customizableProfile:
+      localStorage.getItem("customizableProfile") === "true" ? true : false,
+  });
 
   const handleCheckboxChange = (checkboxName) => {
-    setCheckboxes({
-      ...checkboxes  , 
-      [checkboxName]: !checkboxes[checkboxName]
-    })
-
-  }
+    const updatedCheckboxes = {
+      ...checkboxes,
+      [checkboxName]: !checkboxes[checkboxName],
+    };
+    setCheckboxes(updatedCheckboxes);
+    localStorage.setItem(checkboxName, updatedCheckboxes[checkboxName]);
+  };
   return (
     <Col className="side-bar md-7  mt-5">
       <h1 className="title">Pick add-ons</h1>
       <p>Add-ons help enhance your gaming experience.</p>
 
       <div className="cards">
-        <Card className={`mt-5 my-3 ${checkboxes.onlineServices ? "card-selected" : ""}`}>
+        <Card
+          className={`mt-5 my-3 ${
+            checkboxes.onlineServices ? "card-selected" : ""
+          }`}
+        >
           <div className="d-flex">
             <div className="p-2">
-              <input type="checkbox" 
-              className="check mt-3 mx-2"
-              checked={checkboxes.onlineServices}
+              <input
+                type="checkbox"
+                className="check mt-3 mx-2"
+                checked={checkboxes.onlineServices}
                 onChange={() => handleCheckboxChange("onlineServices")}
-                ></input>
+              ></input>
             </div>
             <div className="p-2">
               <div className="title">Online Services</div>
@@ -43,13 +52,17 @@ const Addons = ({ onPrev, onNext }) => {
             </div>
           </div>
         </Card>
-        <Card className={`my-3 ${checkboxes.largerStorage ? "card-selected" : ""}`}>
+        <Card
+          className={`mt-4 ${checkboxes.largerStorage ? "card-selected" : ""}`}
+        >
           <div className="d-flex">
             <div className="p-2">
-              <input type="checkbox" 
-              className="check mt-3 mx-2"
-              checked={checkboxes.largerStorage}
-                onChange={() => handleCheckboxChange("largerStorage")}></input>
+              <input
+                type="checkbox"
+                className="check mt-3 mx-2"
+                checked={checkboxes.largerStorage}
+                onChange={() => handleCheckboxChange("largerStorage")}
+              ></input>
             </div>
             <div className="p-2">
               <div className="title">Larger storage</div>
@@ -60,13 +73,19 @@ const Addons = ({ onPrev, onNext }) => {
             </div>
           </div>
         </Card>
-        <Card className={`my-3 ${checkboxes.customizableProfile ? "card-selected" : ""}`}>
+        <Card
+          className={`mt-4 ${
+            checkboxes.customizableProfile ? "card-selected" : ""
+          }`}
+        >
           <div className="d-flex">
             <div className="p-2">
-              <input type="checkbox" 
-              className="check mt-3 mx-2"
-              checked={checkboxes.customizableProfile}
-                onChange={() => handleCheckboxChange("customizableProfile")}></input>
+              <input
+                type="checkbox"
+                className="check mt-3 mx-2"
+                checked={checkboxes.customizableProfile}
+                onChange={() => handleCheckboxChange("customizableProfile")}
+              ></input>
             </div>
             <div className="p-2">
               <div className="title">Customizable Profile</div>
@@ -80,12 +99,12 @@ const Addons = ({ onPrev, onNext }) => {
       </div>
 
       <div className="buttons justify-content-between d-flex mt-5">
-        <div className="nextpage">
-          <button className="btn-prev-step mt-4" onClick={onPrev}>
+        <div className="nextpage mt-4">
+          <button className="btn-prev-step " onClick={onPrev}>
             Go Back
           </button>
         </div>
-        <div className="nextpage">
+        <div className="nextpage mt-4">
           <Button className="btn-next-step " onClick={onNext}>
             Next Step
           </Button>
