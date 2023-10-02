@@ -20,7 +20,7 @@
 
 .left-img{
     position: relative;
-    background: url(./assets/images/bg-sidebar-desktop.png);
+    background: url(../images/bg-sidebar-desktop.png);
     height: 35rem;
     background-repeat: no-repeat;
 }

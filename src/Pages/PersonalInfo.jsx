@@ -3,13 +3,14 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Col } from "react-bootstrap";
 
-import "./personalinfo.css";
+import "../assets/styling/personalinfo.css";
 
 const PersonalInfo = ({ onNext }) => {
   // For form fields
-  const [name, setName] = useState(localStorage.getItem("name") || "");
-  const [email, setEmail] = useState(localStorage.getItem("email") || "");
-  const [number, setNumber] = useState(localStorage.getItem("number") || "");
+  const items = JSON.parse(localStorage.getItem('step1Details')) || {};
+  const [name, setName] = useState(items.name || "");
+  const [email, setEmail] = useState(items.email || "");
+  const [number, setNumber] = useState(items.number || "");
   const [formValid, setFormValid] = useState(true);
 
   // For validation message
@@ -72,9 +73,7 @@ const PersonalInfo = ({ onNext }) => {
     setFormValid(isValid);
 
     if (isValid) {
-      localStorage.setItem("name", name);
-      localStorage.setItem("email", email);
-      localStorage.setItem("number", number);
+      localStorage.setItem('step1Details' , JSON.stringify({name , email , number}))
       onNext();
     }
   };

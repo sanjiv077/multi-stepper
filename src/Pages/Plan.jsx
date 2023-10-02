@@ -5,13 +5,13 @@ import Card from "react-bootstrap/Card";
 
 import { Col, Row } from "react-bootstrap";
 
-import arcade from "./assets/images/icon-arcade.png";
-import advanced from "./assets/images/icon-advanced.png";
-import pro from "./assets/images/icon-pro.png";
+import arcade from "../assets/images/icon-arcade.png";
+import advanced from "../assets/images/icon-advanced.png";
+import pro from "../assets/images/icon-pro.png";
 
-import "./plan.css";
+import "../assets/styling/plan.css";
 
-const Plan = ({ onPrev, onNext }) => {
+const Plan = ({ onPrev, onNext ,  selectedPlan }) => {
   const [billingPeriod, setBillingPeriod] = useState(
     localStorage.getItem("billingPeriod") || "monthly"
   );

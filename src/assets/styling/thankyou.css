@@ -1,0 +1,24 @@
+.body{
+  height: 100%;
+  width: 300px;
+  /* display: flex;
+  flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+}
+.thanks-img {
+  height: 80px;
+  width: 80px;
+}
+.thanks-txt {
+  margin-top: 2.5rem;
+  font-size: 1.875rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: #001f4d;
+}
+.thanks-desc {
+  color: grey;
+  margin-top: 0.75rem;
+  text-align: center;
+}
