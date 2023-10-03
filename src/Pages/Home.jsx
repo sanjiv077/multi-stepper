@@ -15,29 +15,43 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [step, setStep] = useState(1);
+
+  const [selectedPlan, setSelectedPlan] = useState({
+    id: 1,
+    name: "Arcade",
+    pricemonthly: "9",
+    priceyearly: "90",
+  });
+
+  const [selectedAddons, setSelectedAddons] = useState([]);
+
   const navigate = useNavigate();
 
+  const handlePlanSelection = (planData) => {
+    setSelectedPlan(planData);
+  };
+
+  const handleAddonsSelection = (selectedAddonsData) => {
+    setSelectedAddons(selectedAddonsData);
+  };
+
   const handleNext = (stepNum) => {
-    if(stepNum == 1){
-      navigate('/')
+    if (stepNum === 1) {
+      navigate("/");
       setStep(stepNum);
-    }
-    else if(stepNum == 2){
-      navigate('/plan')
-    }
-    else if(stepNum == 3){
-      navigate('/addons')
+    } else if (stepNum === 2) {
+      navigate("/plan");
+    } else if (stepNum === 3) {
+      navigate("/addons");
       setStep(stepNum);
     }
     setStep(stepNum);
-
-   
   };
 
   const handlePlus = () => {
-     setStep(step + 1);
+    setStep(step + 1);
     navigate(`/step${step + 1}`);
-  }
+  };
 
   const handlePrev = () => {
     setStep(step - 1);
@@ -65,7 +79,11 @@ const Home = () => {
                       <p className="info text-white mt-1">YOUR INFO</p>
                     </div>
                   </NavLink>
-                  <NavLink onClick={() => handleNext(2)} to="/plan" className="d-flex mt-3">
+                  <NavLink
+                    onClick={() => handleNext(2)}
+                    to="/plan"
+                    className="d-flex mt-3"
+                  >
                     <p
                       className={`ms-5 ${
                         step === 2 ? "selected-step" : "notselected-step"
@@ -78,7 +96,11 @@ const Home = () => {
                       <p className="info text-white mt-1">SELECT PLAN</p>
                     </div>
                   </NavLink>
-                  <NavLink onClick={() => handleNext(3)} to="/addons" className="d-flex mt-3">
+                  <NavLink
+                    onClick={() => handleNext(3)}
+                    to="/addons"
+                    className="d-flex mt-3"
+                  >
                     <p
                       className={`ms-5 ${
                         step === 3 ? "selected-step" : "notselected-step"
@@ -91,7 +113,10 @@ const Home = () => {
                       <p className="info text-white mt-1">ADD-ONS</p>
                     </div>
                   </NavLink>
-                  <NavLink onClick={() => handleNext(4)} className="d-flex mt-3">
+                  <NavLink
+                    onClick={() => handleNext(4)}
+                    className="d-flex mt-3"
+                  >
                     <p
                       className={`ms-5 ${
                         step === 4 ? "selected-step" : "notselected-step"
@@ -109,9 +134,33 @@ const Home = () => {
             </Col>
             <Col className="col-md-8">
               {step === 1 && <PersonalInfo onNext={handlePlus} />}
-              {step === 2 && <Plan onPrev={handlePrev} onNext={handlePlus} />}
-              {step === 3 && <Addons onPrev={handlePrev} onNext={handlePlus} />}
-              {step === 4 && <Summary onPrev={handlePrev} />}
+              {step === 2 && (
+                <Plan
+                selectedPlan={selectedPlan}
+                  onPrev={handlePrev}
+                  handleSelectedPlan={handlePlanSelection}
+                  onNext={() => handlePlus()}
+                  setSelectedPlan={setSelectedPlan}
+                />
+              )}
+              {step === 3 && (
+                <Addons
+                  onPrev={handlePrev}
+                  handleAddonsSelection={handleAddonsSelection}
+                  onNext={() => {
+                    handlePlus();
+                  }}
+                />
+              )}
+              {step === 4 && (
+                <Summary
+                  onPrev={handlePrev}
+                  selectedPlan={selectedPlan}
+                  selectedAddons={selectedAddons}
+                  pricemonthly={selectedPlan ? selectedPlan.pricemonthly : null}
+                  priceyearly={selectedPlan ? selectedPlan.priceyearly : null}
+                />
+              )}
             </Col>
           </Row>
         </Container>

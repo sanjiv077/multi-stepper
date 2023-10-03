@@ -1,11 +1,27 @@
-import { useState , useEffect } from "react";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import { Col } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import { Col , Card , Button} from "react-bootstrap";
 
 import "../assets/styling/addons.css";
 
-const Addons = ({ onPrev, onNext }) => {
+const addonsData = [
+  {
+    name: "Online Services",
+    description: "Access to multiplayer games",
+    price: "+$1/mo",
+  },
+  {
+    name: "Larger Storage",
+    description: "Extra 1TB of cloud save",
+    price: "+$2/mo",
+  },
+  {
+    name: "Customizable Profile",
+    description: "Custom theme on your profile",
+    price: "+$2/mo",
+  },
+];
+
+const Addons = ({ onPrev, onNext, handleAddonsSelection }) => {
   const [checkboxes, setCheckboxes] = useState({
     onlineServices:
       localStorage.getItem("onlineServices") === "true" ? true : false,
@@ -14,6 +30,7 @@ const Addons = ({ onPrev, onNext }) => {
     customizableProfile:
       localStorage.getItem("customizableProfile") === "true" ? true : false,
   });
+  console.log({checkboxes});
   useEffect(() => {
     const savedCheckboxes = Object.keys(checkboxes);
     savedCheckboxes.forEach((checkbox) => {
@@ -25,7 +42,7 @@ const Addons = ({ onPrev, onNext }) => {
         }));
       }
     });
-  }, []); 
+  }, []);
 
   const handleCheckboxChange = (checkboxName) => {
     const updatedCheckboxes = {
@@ -35,35 +52,28 @@ const Addons = ({ onPrev, onNext }) => {
     setCheckboxes(updatedCheckboxes);
     localStorage.setItem(checkboxName, updatedCheckboxes[checkboxName]);
   };
-  const addonsData = [
-    {
-      name: "Online Services",
-      description: "Access to multiplayer games",
-      price: "+$1/mo",
-    },
-    {
-      name: "Larger Storage",
-      description: "Extra 1TB of cloud save",
-      price: "+$2/mo",
-    },
-    {
-      name: "Customizable Profile",
-      description: "Custom theme on your profile",
-      price: "+$2/mo",
-    },
-  ];
+  
+  const handleNextClick = () => {
+    const selectedAddonsData = addonsData.filter(
+      (addon) => checkboxes[addon.name.toLowerCase()]
+    );
+    handleAddonsSelection(selectedAddonsData);
+    onNext(selectedAddonsData);
+  };
 
   return (
     <Col className="side-bar md-7  mt-5">
       <h1 className="title">Pick add-ons</h1>
       <p>Add-ons help enhance your gaming experience.</p>
-
+    {console.log({addonsData})}
       <div className="cards mt-5">
-      {addonsData.map((addon, index) => (
+        {addonsData.map((addon, index) => (
           <Card
             key={index}
             className={`mt-4 ${
-              checkboxes[addon.name.toLowerCase()] ? "card-selected" : "card-unselected"
+              checkboxes[addon.name.toLowerCase()]
+                ? "card-selected"
+                : "card-unselected"
             }`}
           >
             <div className="d-flex">
@@ -72,7 +82,9 @@ const Addons = ({ onPrev, onNext }) => {
                   type="checkbox"
                   className="check mt-3 mx-2"
                   checked={checkboxes[addon.name.toLowerCase()]}
-                  onChange={() => handleCheckboxChange(addon.name.toLowerCase())}
+                  onChange={() =>
+                    handleCheckboxChange(addon.name.toLowerCase())
+                  }
                 />
               </div>
               <div className="p-2">
@@ -94,7 +106,13 @@ const Addons = ({ onPrev, onNext }) => {
           </button>
         </div>
         <div className="nextpage mt-4">
-          <Button className="btn-next-step" onClick={onNext}>
+          <Button
+            className="btn-next-step"
+            onClick={() => {
+              onNext();
+              handleNextClick();
+            }}
+          >
             Next Step
           </Button>
         </div>
@@ -103,4 +121,4 @@ const Addons = ({ onPrev, onNext }) => {
   );
 };
 
-export default Addons
+export default Addons;

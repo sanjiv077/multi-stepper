@@ -1,0 +1,68 @@
+
+.monthly-box{
+  background-color: #EFF3FC;
+  width:72%;
+  border-radius: 16px;
+  height:180px;
+  padding:20px;
+  margin-top:45px;
+}
+.arcade-monthly{
+color:#232365;
+font-size: 15px;
+font-weight: 600;
+}
+.amount-usd-mo{
+  color:#232365;
+  font-weight: 600;
+}
+.amount-usd{
+  color:#101082;
+  font-size:13px;
+  font-weight: 500;
+}
+
+.service-storage{
+  font-size:13px;
+  font-weight: 500;
+}
+.arcade-text{
+  color:rgb(79, 63, 202);
+  text-decoration: underline;
+  font-size:13px;
+}
+.with-border {
+  border-bottom: 1.8px solid lightgray; 
+}
+.service-storage{
+  color:#888884;
+}
+.btn-confirm{
+  background-color:rgb(141, 87, 255);
+  color: white;
+  padding: 4px;
+  border-radius: 10px;
+  height: 48px;
+  width: 120px;
+  border: none;
+}
+.last-section {
+  margin-top:130px;
+  padding-right:150px;
+}
+.final-amount{
+  margin-right:170px;
+  color:blue;
+  font-weight: 600;
+  font-size: 18px;
+}
+.total{
+  color:gray;
+  font-size: 13px;
+  font-weight:500;
+}
+.go-back-text{
+  color:grey;
+  font-size: 15px;
+  font-weight: 500;
+}
