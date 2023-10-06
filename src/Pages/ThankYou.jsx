@@ -1,4 +1,3 @@
-import React from "react";
 import icon from "../assets/images/icon-thank-you.png";
 
 import "../assets/styling/thankyou.css"

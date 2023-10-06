@@ -1,11 +1,14 @@
 import { useState } from "react";
-import Button from "react-bootstrap/Button";
-import { Card, Col } from "react-bootstrap";
+import { Col ,Button} from "react-bootstrap";
+
+import ThankYou from "./ThankYou";
+import { useAppContext } from "../context/AppContext";
 
 import "../assets/styling/summary.css";
-import ThankYou from "./ThankYou";
 
-const Summary = ({ onPrev, selectedPlan, selectedAddons }) => {
+const Summary = () => {
+  const { handlePrev, selectedAddons, selectedPlan } = useAppContext();
+
   const [showComponent, setShowComponent] = useState(false);
 
   const handleConfirmClick = () => {
@@ -20,27 +23,14 @@ const Summary = ({ onPrev, selectedPlan, selectedAddons }) => {
   const hasValidPlan =
     selectedPlan && (selectedPlan.pricemonthly || selectedPlan.priceyearly);
 
-  const pricemonthly =
-    selectedPlan?.billingPeriod === "monthly"
-      ? selectedPlan.pricemonthly
-      : null;
-  const priceyearly =
-    selectedPlan?.billingPeriod === "yearly" ? selectedPlan.priceyearly : null;
-
-    const planPrice =  selectedPlan?.billingPeriod === "yearly" ? selectedPlan.priceyearly : selectedPlan.pricemonthly
+  const planPrice =
+    selectedPlan?.billingPeriod === "yearly"
+      ? selectedPlan.priceyearly
+      : selectedPlan.pricemonthly;
 
   const totalPrice = hasValidPlan
-    ? (parseFloat(planPrice) || 0) +
-      totalAddonsPrice
+    ? (parseFloat(planPrice) || 0) + totalAddonsPrice
     : totalAddonsPrice;
-
-  console.log("selectedPlan:", selectedPlan);
-  console.log("selectedAddons:", selectedAddons);
-  console.log("totalAddonsPrice:", totalAddonsPrice);
-  console.log("hasValidPlan:", hasValidPlan);
-  console.log("pricemonthly:", pricemonthly);
-  console.log("priceyearly:", priceyearly);
-  console.log("totalPrice:", totalPrice);
 
   return (
     <Col className={`side-bar md-7 mt-5 ${showComponent ? "disabled" : ""}`}>
@@ -48,9 +38,12 @@ const Summary = ({ onPrev, selectedPlan, selectedAddons }) => {
         <ThankYou />
       ) : (
         <>
+{/* header */}
           <h1 className="title">Finishing up</h1>
           <p>Double-check everything looks OK before confirming.</p>
+{/* all selection price */}
           <div className="monthly-box">
+{/* selected plan price */}
             {selectedPlan && (
               <div className="arcade-section with-border d-flex justify-content-between">
                 <div className="arcade-monthly">
@@ -65,7 +58,7 @@ const Summary = ({ onPrev, selectedPlan, selectedAddons }) => {
                 </div>
               </div>
             )}
-
+{/* selected addons price */}
             {selectedAddons && selectedAddons.length > 0 && (
               <div className="addons">
                 <ul>
@@ -82,13 +75,15 @@ const Summary = ({ onPrev, selectedPlan, selectedAddons }) => {
               </div>
             )}
           </div>
+{/* total */}
           <div className="total-section d-flex justify-content-between mt-4">
             <div className="total ms-3">Total</div>
             <div className="final-amount">${totalPrice.toFixed(2)}</div>
           </div>
+{/* buttons */}
           <div className="buttons justify-content-between d-flex mt-5">
             <div className="nextpage mt-4">
-              <button className="btn-prev-step" onClick={onPrev}>
+              <button className="btn-prev-step" onClick={handlePrev}>
                 Go Back
               </button>
             </div>

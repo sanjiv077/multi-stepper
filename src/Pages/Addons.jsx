@@ -1,27 +1,16 @@
 import { useState, useEffect } from "react";
-import { Col , Card , Button} from "react-bootstrap";
+import { Col, Card, Button } from "react-bootstrap";
+
+import { useAppContext } from "../context/AppContext";
 
 import "../assets/styling/addons.css";
+import { data } from "../mock/data";
 
-const addonsData = [
-  {
-    name: "Online Services",
-    description: "Access to multiplayer games",
-    price: "+$1/mo",
-  },
-  {
-    name: "Larger Storage",
-    description: "Extra 1TB of cloud save",
-    price: "+$2/mo",
-  },
-  {
-    name: "Customizable Profile",
-    description: "Custom theme on your profile",
-    price: "+$2/mo",
-  },
-];
 
-const Addons = ({ onPrev, onNext, handleAddonsSelection }) => {
+const Addons = () => {
+  const { handlePlus, handlePrev, handleAddonsSelection } = useAppContext();
+  
+  const addonsData = data.addons;
   const [checkboxes, setCheckboxes] = useState({
     onlineServices:
       localStorage.getItem("onlineServices") === "true" ? true : false,
@@ -30,7 +19,7 @@ const Addons = ({ onPrev, onNext, handleAddonsSelection }) => {
     customizableProfile:
       localStorage.getItem("customizableProfile") === "true" ? true : false,
   });
-  console.log({checkboxes});
+
   useEffect(() => {
     const savedCheckboxes = Object.keys(checkboxes);
     savedCheckboxes.forEach((checkbox) => {
@@ -52,20 +41,19 @@ const Addons = ({ onPrev, onNext, handleAddonsSelection }) => {
     setCheckboxes(updatedCheckboxes);
     localStorage.setItem(checkboxName, updatedCheckboxes[checkboxName]);
   };
-  
+
   const handleNextClick = () => {
     const selectedAddonsData = addonsData.filter(
       (addon) => checkboxes[addon.name.toLowerCase()]
     );
     handleAddonsSelection(selectedAddonsData);
-    onNext(selectedAddonsData);
+    handlePlus(selectedAddonsData);
   };
 
   return (
     <Col className="side-bar md-7  mt-5">
       <h1 className="title">Pick add-ons</h1>
       <p>Add-ons help enhance your gaming experience.</p>
-    {console.log({addonsData})}
       <div className="cards mt-5">
         {addonsData.map((addon, index) => (
           <Card
@@ -101,7 +89,7 @@ const Addons = ({ onPrev, onNext, handleAddonsSelection }) => {
 
       <div className="buttons justify-content-between d-flex mt-5">
         <div className="nextpage mt-4">
-          <button className="btn-prev-step" onClick={onPrev}>
+          <button className="btn-prev-step" onClick={handlePrev}>
             Go Back
           </button>
         </div>
@@ -109,7 +97,7 @@ const Addons = ({ onPrev, onNext, handleAddonsSelection }) => {
           <Button
             className="btn-next-step"
             onClick={() => {
-              onNext();
+              handlePlus();
               handleNextClick();
             }}
           >
