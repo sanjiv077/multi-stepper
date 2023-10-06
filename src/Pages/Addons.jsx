@@ -13,11 +13,11 @@ const Addons = () => {
   const addonsData = data.addons;
   const [checkboxes, setCheckboxes] = useState({
     onlineServices:
-      localStorage.getItem("onlineServices") === "true" ? true : false,
+       false,
     largerStorage:
-      localStorage.getItem("largerStorage") === "true" ? true : false,
+       false,
     customizableProfile:
-      localStorage.getItem("customizableProfile") === "true" ? true : false,
+       false,
   });
 
   useEffect(() => {

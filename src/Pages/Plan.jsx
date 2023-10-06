@@ -11,7 +11,7 @@ const Plan = () => {
   const { handlePlus, handlePrev, selectedPlan, setSelectedPlan } =
     useAppContext();
 
-  const [selectedCardIndex, setSelectedCardIndex] = useState({});
+  const [, setSelectedCardIndex] = useState({});
 
   const plan = data.plan;
   const [billingPeriod, setBillingPeriod] = useState(

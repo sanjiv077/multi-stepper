@@ -13,6 +13,7 @@ const PersonalInfo = () => {
     email: Yup.string().email("Invalid email").required("Email is required"),
     number: Yup.string().required("Phone number is required"),
   });
+
   const formik = useFormik({
     initialValues: {
       name: "",
